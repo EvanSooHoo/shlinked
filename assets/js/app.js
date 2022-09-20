@@ -247,7 +247,9 @@ Hooks.Bizarro = {
 Hooks.Clappify = {
   mounted() {
     this.el.addEventListener("click", (e) => {
+      console.log('you just pressed clap');
       const id = e.target.value;
+      alert(id);
       const textarea = document.getElementById(id);
 
       if (textarea.value.indexOf(" ") >= 0) {
@@ -255,6 +257,27 @@ Hooks.Clappify = {
       } else {
         textarea.value = " 👏 " + textarea.value + " 👏 ";
       }
+    });
+  },
+};
+
+Hooks.Undo = {
+  mounted() {
+    this.el.addEventListener("click", (e) => {
+      //e is a mouseevent
+      //e.target is buttonelement
+      //e.target.id is undefined
+      //IO.puts('test');
+      //console.log('do the undo thingy');
+      
+      const id = e.target.value;
+      //alert('the value of id is', id);
+      //alert(e.target.value);
+      const textarea = document.getElementById(id);
+
+      if (textarea !== null ) {
+        textarea.value = textarea.value.replace("👏","");
+      } 
     });
   },
 };
